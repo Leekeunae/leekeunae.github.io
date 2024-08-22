@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>keunae Portfolio</title>
+    <style>
+      
+
+
+        /* SET CSS */
+        /* mobile CSS */
+        @keyframes ani01 {
+            0%{
+                opacity:0.3;
+                transform:scale(1);
+            }
+            4%{
+                opacity:1;
+                transform:scale(1.1);
+            }
+            6%{
+                opacity:1;
+                transform:scale(1.1);
+            }
+            10%{
+                opacity:0.3;
+                transform:scale(1);
+            }
+            100%{
+                opacity:0.3;
+                transform:scale(1);
+            }
+        }
+        /* FONTS*/
+        @font-face{
+            font-family: 'Cormorant';
+            src: url(./fonts/CormorantGaramond-Bold.ttf);
+        }
+        @font-face{
+            font-family: 'EB';
+            src: url(./fonts/EBGaramond-ExtraBold.ttf);
+        }
+        @font-face{
+            font-family: 'NanumSquareNeo';
+            src: url(./fonts/NanumSquareNeo-Variable.ttf);
+        }
+        @font-face{
+            font-family: 'NanumSquareNeoRg';
+            src: url(./fonts/NanumSquareNeoOTF-Rg.otf);
+        }
+        @font-face{
+            font-family: 'UbuntuSans';
+            src: url(./fonts/UbuntuSans-ExtraBold.ttf);
+        }
+        @font-face{
+            font-family: 'UbuntuSans-Medium';
+            src: url(./fonts/UbuntuSans-Medium.ttf);
+        }
+
+
+
+        :root{
+            --main-color:#000;
+            --sub-color:#fff;
+            font-family: 'NanumSquareNeo';
+            font-weight:400;
+            font-size:16px;
+            line-height:1.5;
+            color:var(--sub-color);
+            background:var(--main-color);
+            scroll-behavior:smooth;
+        }
+        .wrap{
+            overflow:hidden;
+        }
+        .container{
+            max-width:1200px;
+            margin:0 auto;
+            padding:0 16px;
+        }
+        .header{
+            padding:16px 0;
+            background:var(--sub-color);
+            color:var(--main-color);
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            z-index:1000;
+        }
+        .header .container{
+            display:grid;
+            grid-template-columns:auto auto;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .header h1{
+            font-weight:700;
+            font-size:22px;
+            text-transform:uppercase;
+            position:relative;
+            z-index:11;
+            opacity:0.3;
+            transform:scale(1);            
+            animation: ani01 100s 0.3s infinite;
+        }
+        
+        .header h1:hover{
+            color:var(--sub-color);
+            text-shadow:
+                0.5px 0px 0px var(--main-color),
+                -0.5px 0px 0px var(--main-color),
+                0px 0.5px 0px var(--main-color),
+                0px -0.5px 0px var(--main-color)
+            ;
+        }
+        .header .btn-nav{
+            cursor:pointer;
+            width:20px;
+            height:16px;
+            display:grid;
+            grid-template-columns:1fr;
+            align-content:space-between;
+            position:relative;
+            z-index:11;
+        }
+        .header .btn-nav span{
+            height:2px;
+            background:var(--main-color);
+            text-indent:-999999px;
+            transition:0.3s;
+        }
+        .header .btn-nav.active span:nth-child(1){
+            transform:translateY(7px) rotate(45deg);
+        }
+        .header .btn-nav.active span:nth-child(2){
+            transform:scale(0);
+        }
+        .header .btn-nav.active span:nth-child(3){
+            transform:translateY(-7px) rotate(-45deg);
+        }
+        .header .gnb{
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            z-index:10;
+            height:100vh;
+            padding:65px 16px 16px 16px;
+            background:var(--sub-color);
+            color:var(--main-color);
+            transform:translateX(100%);
+            transition:0.3s;
+        }
+        .header .gnb.active{
+            transform:translateX(0);
+        }        
+        .gnb ul{
+            display:grid;
+            column-gap:1.5em;
+            font-weight:500;
+            font-size:18px;
+            text-transform:capitalize;
+        }
+        .gnb li{
+            padding:16px 0;
+            text-align:center;
+        }
+        .gnb li:hover{
+            background:var(--main-color);
+            color:var(--sub-color);
+            transform:scale(1.1);
+        }
+
+
+        .sec{
+            height:100vh;
+            padding-top:65px;
+        }
+        .intro .container{
+            max-width:100%;
+            height:100%;
+            padding:0;
+            overflow:hidden;
+            position:relative;
+        }
+        .intro h2{
+            display:none;
+        }
+        .intro .vdo{
+            display:none;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
+            filter:grayscale(1) blur(10px);
+            transform:scale(1.3);
+        }
+        .intro .vdo01{
+            display:block;
+        }
+        .intro .container::after{            
+            content:'';
+            display:block;
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background:var(--main-color);
+            opacity:0.6;
+        }
+       
+        /* 768px 이상 */
+        @media (min-width:768px){
+            .intro .vdo01{
+                display:none;
+            }
+            .intro .vdo02{
+                display:block;
+            }
+        }
+
+
+
+
+        /* 1200px 이상 */
+        @media (min-width:1200px){
+            .header .btn-nav{
+                display:none;
+            }
+            .header .gnb{
+                position:static;
+                transform:translateX(0);
+                height:auto;
+                padding:0;
+            }            
+            .gnb ul{
+                grid-template-columns:repeat(6, auto);
+            }
+            .gnb li{
+                padding:0;
+            }
+            .gnb li:hover{
+                background:var(--sub-color);
+                color:var(--main-color);                
+            }
+            .intro .vdo02{
+                display:none;
+            }
+            .intro .vdo03{
+                display:block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="wrap">
+        <header class="header">
+            <div class="container">
+                <h1><a href="./index.html">Lee Portfolio</a></h1>
+                <div class="btn-nav">
+                    <span></span>
+                    <span>버튼</span>
+                    <span></span>
+                </div>
+                <nav class="gnb">
+                    <!-- <div class="btn-nav-close">&times;</div> -->
+                    <ul>
+                        <li><a href="#intro">home</a></li>
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#design">design</a></li>
+                        <li><a href="#publishing">publishing</a></li>
+                        <li><a href="#video">video</a></li>
+                        <li><a href="#contact">contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section class="sec sec01 intro" id="intro">
+            <div class="container">
+                <h2>intro</h2>
+                <video class="vdo vdo01" src="./media/rain01.mp4" muted autoplay loop></video>
+                <video class="vdo vdo02" src="./media/rain02.mp4" muted autoplay loop></video>
+                <video class="vdo vdo03" src="./media/rain03.mp4" muted autoplay loop></video>
+            </div>
+        </section>
+        <section class="sec sec02 about" id="about">
+            <div class="container">
+                <h2>about</h2>
+            </div>
+        </section>
+        <section class="sec sec03 design" id="design">
+            <div class="container">
+                <h2>design</h2>
+            </div>
+        </section>
+        <section class="sec sec04 publishing" id="publishing">
+            <div class="container">
+                <h2>publishing</h2>
+            </div>
+        </section>
+        <section class="sec sec05 video" id="video">
+            <div class="container">
+                <h2>video</h2>
+            </div>
+        </section>
+        <footer class="sec sec06 footer contact" id="contact">
+            <div class="container">
+                <h2>contact</h2>
+            </div>
+        </footer>
+    </section>
+
+    <!-- vanilla JS -->
+    <script>
+        function setClass(element,className){
+            element.classList.add(className);
+        }
+        function resetClass(element,className){
+            element.classList.remove(className);
+        }
+        function toggleClass(element,className){
+            element.classList.toggle(className);
+        }
+
+
+        let btnNav = document.querySelector('.btn-nav');        
+        let navList = document.querySelectorAll('.gnb li');
+
+        btnNav.onclick=function(){
+            let gnb = document.querySelector('.gnb');            
+            toggleClass(gnb,'active');
+            toggleClass(this,'active');
+        }
+
+        for(let idx=0;idx<=navList.length-1;idx++){
+            navList[idx].onclick = function(){
+                let gnb = document.querySelector('.gnb');
+                resetClass(gnb,'active');
+                resetClass(btnNav,'active');
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
