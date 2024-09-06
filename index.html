@@ -3,7 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./fonts/NotoSansKR.ttf">
+    <link rel="stylesheet" href="./fonts/Playball-Regular.ttf">   
+    <link rel="stylesheet" href="./css/reset.css">    
     <title>포트폴리오</title>
+    <style> 
+        :root{
+            --main-color:#000;
+            --sub-color:#fff;            
+            font-family: 'Noto Sans KR';
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 1.5;
+            color:var(--main-color);
+            scroll-behavior:smooth;
+            
+        }
+        .playball{font-family:'playball';}
+        .header{
+            padding: 20px 0;
+            background: var(--main-color);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            color: var(--sub-color);
+        }
+        
+        .header.active{
+            position: fixed; 
+            transform:translateY(-100%);              
+
+        }
+        .header .container{
+            width: 1800px;
+            margin: 0 auto;
+            padding: 0 36px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            
+        }
+        .logo{
+            font-weight: 900;
+            font-size: 1.5em;
+            transform:translateX(-100px) ;
+            
+        }
+        .gnb{
+            transform: translateX(100px);               
+            
+        }
+        .gnb ul{
+            display:flex;
+            justify-content:flex-end;
+            align-items:center;
+        }
+        .gnb li{
+            margin-left: 3em;
+            font: 1.2em;
+        }
+        .sec{
+            padding: 200px 0;
+            background:#000000;
+            color: #ffffff;
+        }
+        .sec02,.sec04,.sec06{
+            background:#ffffff;
+            color: #000;
+        }
+        .sec .container{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .sec h2{
+            width: 30px;
+            margin-bottom: 120px;
+            border-bottom: 1px solid #999;
+            font-family: 'Playball';
+            font-weight: 500;
+            font-size: 0px;
+            text-transform: capitalize;
+            
+        }
+        .sec h2.sec-tit{
+            width: 0; 
+            opacity: 0;           
+            overflow: hidden;
+            transform: 0.3s;  
+        }
+        .sec.active h2.sec-tit{
+            width: 30%;
+            opacity: 1;
+           
+        }    
+       
+
+
+
+        
+        .work .art{
+                width:50%;
+            }
+
+        .work .container{
+            display: flex;
+            flex-flow:row wrap;
+        }
+        .work h2{
+            width: 100%;
+            margin-bottom: 36px;
+            font-size: 3em;
+            color: #000000;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .work h2 div{
+            max-width: 1132px;
+            margin: 0 auto;
+        }
+        .work .art{
+            width: 100%;
+            position: relative;
+        }
+        .work .art h3{
+            position:absolute;
+            left:24px;
+            top:0;
+            font-weight:500;
+            font-size:1.4em;
+            color:#fff;
+            text-transform:capitalize;
+            opacity:0;
+            transition:all 0.3s;
+        }
+        .work .art p{
+            position:absolute;
+            left:24px;
+            top:32px;
+            font-size:0.8em;
+            color:#fff;
+            text-transform:uppercase;
+            opacity:0;
+            transition:all 0.3s
+
+        }
+        .work .art::before{
+            content:'';
+            display:block;
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background:#000000;
+            opacity:0;
+            transition:opacity 0.3s;
+        }
+        .work .art:hover::before{
+            opacity:0.7;
+        }
+        .work .art:hover h3{
+            top:24px;
+            opacity:1;
+        }
+        .work .art:hover p{
+            top:56px;
+            opacity:1;
+        }       
+               
+
+
+            
+      
+         
+    </style>
 </head>
 <body>
     <section class="wrap">
@@ -23,17 +197,24 @@
         </header>
         <section class="sec sec01 home" id="home">
             <div class="container">
-                <div class="sec-tit">                    
-                    <h3>PORTFOLIO</h3>
+                <div class="sec-tit">
+                    <h2 class="playball">creative</h2>
+                    <h3>portfolio</h3>
                 </div>                
-                <article class="art sec-video">                   
+                <article class="art sec-con">
+                    <h3 style="display:none;">움직이는 마우스</h3>
+                    <div class="scr-border">
+                        <div class="scr-mouse"></div>
+                        <div class="scr-txt">scroll down</div>
+                    </div>
                     <div class="video-box">
                         <video src="./media/video1-02.mp4" muted autoplay loop></video>
                     </div>
                 </article>
             </div>
-        </section>
-        <section class="sec sec02 about" id="about">
+        </section>              
+        
+        <section class="sec sec02 about" id="about"></section>
             <div class="container">
                 <h2 class="sec-tit">About</h2>
                 <article class="art sec-con">
@@ -49,8 +230,11 @@
                             <p><span>비엘패션(2010.7.1~2013.10.1)</span></p>
                             <p><span>위즈바움(2016.10.24~2024.1.31)</span></p>
                         </div>
-                    </div>
-                    <div class="card card02">
+                    </div>    
+
+
+
+                    <div class="card card02"></div>
                         <div class="card-front">
                             <h3>PROFILE</h3>
                         </div>
@@ -78,7 +262,8 @@
                 </article>
             </div>
         </section>
-        <section class="sec sec03 skill" id="Skill">
+
+        <section class="sec sec03 skill" id="Skill"></section>
             <div class="container">
                 <h2 class="sec-tit">Skill</h2>
                 <article class="art sec-con">
@@ -86,32 +271,63 @@
                         <li>
                             <h3>Html5</h3>
                             <div class="img-box"><img src="./images/ico-html.png" alt="html5"></div>
+                            <div class="desc">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </li>
                         <li>
-                            <H3>Css3</H3>
-                            <div class="img-box"><img src="./images/ico-css.png" alt="css"></div>                                                       
+                            <h3>Css3</h3>
+                            <div class="img-box"><img src="./images/ico-css.png" alt="css"></div> 
+                            <div class="desc"></div>
+                                <span></span>
+                                <span></span>                                
+                                <span class="trans"></span>
+                            </div>                                                      
                         </li>
-                        <li>
+                        <li>                           
                             <h3>Photoship</h3>
-                            <div class="img-box"><img src="./images/ico-photoshop.png" alt="photoshop"></div>                                              
+                            <div class="img-box"><img src="./images/ico-photoshop.png" alt="photoshop"></div>
+                            <div class="desc">
+                                <span></span>
+                                <span></span>                                
+                                <span class="trans"></span>
+                            </div>                                              
                         </li>
                         <li>
                             <h3>Illustrator</h3>
-                            <div class="img-box"><img src="./images/ico-illustrator.png" alt="illustrator"></div>                                                  
+                            <div class="img-box"><img src="./images/ico-illustrator.png" alt="illustrator"></div>
+                            <div class="desc">                                
+                                <span></span>
+                                <span></span>
+                                <span class="trans"></span>
+                            </div>                                                  
                         </li>
+
                         <li>
                             <h3>Excel</h3>                            
-                            <div class="img-box"><img src="./images/ico-excel.png" alt="excel"></div>                          
+                            <div class="img-box"><img src="./images/ico-excel.png" alt="excel"></div>
+                            <div class="desc"></div>                                
+                                <span></span>
+                                <span class="trans"></span>
+                                <span class="trans"></span>
+                            </div>                          
                         </li>
                    </ul>                   
-                </article>
+                </div>                 
+                
             </div>
         </section>
-        <section class="sec sec04 portfolio" id="Portfolio">
+        <section class="sec sec04 work" id="work">
             <div class="container">
                 <h2 class="sec-tit">Portfolio</h2>
-                <p>design banner, publishing, video</p>
+                <h3>design banner, publishing, video</h3>
                 <article class="art art01">
+                    <div class="port port01 design">
+                        <div class="port-con" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500"></div>          
+                        
+                    </div>                
                     <a href="#">
                         <div class="img-box"><img src="./images/work01.jpg" alt="work01"></div>
                         <h3>Design</h3>
@@ -153,8 +369,6 @@
                         <p>WEB/PUBLISHING</p>
                     </a>
                 </article>  
-
-
 
                 <article class="art art07">
                     <a href="video-box">
@@ -213,6 +427,6 @@
         </footer>      
         
     </section>  
-    
+   
 </body>
 </html>
